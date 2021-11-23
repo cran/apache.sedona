@@ -1,7 +1,7 @@
 Type: Package
 Package: apache.sedona
 Title: R Interface for Apache Sedona
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: 
     c(person(family = "Apache Sedona",
              role = c("aut", "cre"),
@@ -31,11 +31,11 @@ Encoding: UTF-8
 RoxygenNote: 7.1.2
 SystemRequirements: 'Apache Spark' 2.4.x or 3.x
 NeedsCompilation: no
-Packaged: 2021-10-09 01:54:24 UTC; jiayu
+Packaged: 2021-11-23 19:07:20 UTC; jiayu
 Author: Apache Sedona [aut, cre],
   Jia Yu [ctb, cph],
   Yitao Li [aut, cph] (<https://orcid.org/0000-0002-1261-905X>),
   The Apache Software Foundation [cph],
   RStudio [cph]
 Repository: CRAN
-Date/Publication: 2021-10-11 08:10:15 UTC
+Date/Publication: 2021-11-23 19:40:02 UTC
