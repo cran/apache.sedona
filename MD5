@@ -1,8 +1,8 @@
-94206f77260bbae8972ec3f474281261 *DESCRIPTION
+e4a18d1234f56d878b597adc140d6ebf *DESCRIPTION
 b47de435fcda8ab8e2ccc6051c37fa5a *NAMESPACE
 e82655964775c81149350d9417e567fd *R/bounding_box.R
 7c9bedcd866df31666efeed19bb865d3 *R/data_interface.R
-2983e297a0dd962550e4804d79e23783 *R/dependencies.R
+25314ae421ebc92db31b4085842b0a95 *R/dependencies.R
 5cbb10e99f8121a95df3233b14c1b989 *R/imports.R
 41f0ceb58662e0d7243a339ba5941f19 *R/sdf_interface.R
 d698831554cf4a531d31bd7fa510bfa6 *R/spatial_index_op.R
