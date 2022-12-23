@@ -57,7 +57,8 @@ if (!inherits(sc, "test_connection")) {
       knn_query_pt_x,
       knn_query_pt_y
     )
-  )
+  ) \%>\%
+      collect()
   knn_query_pt <- knn_query_pt_tbl$pt[[1]]
   input_location <- "/dev/null" # replace it with the path to your input file
   rdd <- sedona_read_geojson_to_typed_rdd(

@@ -1,4 +1,4 @@
-f044bc1cc5dc1a64b25b0f99b7c0a247 *DESCRIPTION
+7f4fc743d518531bb378d966afea2fe9 *DESCRIPTION
 b47de435fcda8ab8e2ccc6051c37fa5a *NAMESPACE
 e82655964775c81149350d9417e567fd *R/bounding_box.R
 7c9bedcd866df31666efeed19bb865d3 *R/data_interface.R
@@ -20,7 +20,7 @@ e9dc22f6df3a862056e7209090ee87e0 *man/new_bounding_box.Rd
 6ffc224668d29c710a54ee730b9c8308 *man/sdf_register.spatial_rdd.Rd
 05ce58e7fb5879c91eb5e76e44878ce6 *man/sedona_apply_spatial_partitioner.Rd
 8394fc7d31b4bdcaedfe9ed3a33bf6df *man/sedona_build_index.Rd
-d172c1187b8f0148d5e3efe290fefc0a *man/sedona_knn_query.Rd
+77c2e3b6bb43796b3f3a1b52b19cae0d *man/sedona_knn_query.Rd
 a7dff3d1d94ebd9ce5ba6aba5f4c6148 *man/sedona_range_query.Rd
 c0cd63033105a2e0a515955ab80e1b97 *man/sedona_read_dsv_to_typed_rdd.Rd
 bcd456e5215b45a720acc2afcd9a29f3 *man/sedona_read_geojson.Rd
