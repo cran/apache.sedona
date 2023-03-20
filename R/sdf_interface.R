@@ -15,18 +15,20 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
+
 #' Import data from a spatial RDD into a Spark Dataframe.
+#' 
+#' @description Import data from a spatial RDD (possibly with non-spatial attributes) into a
+#' Spark Dataframe.
+#' * `sdf_register`: method for sparklyr's sdf_register to handle Spatial RDD
+#' * `as.spark.dataframe`: lower level function with more fine-grained control on non-spatial columns
 #'
 #' @param x A spatial RDD.
 #' @param name Name to assign to the resulting Spark temporary view. If
 #'   unspecified, then a random name will be assigned.
+#' @param non_spatial_cols Column names for non-spatial attributes in the
+#'   resulting Spark Dataframe. By default (NULL) it will import all field names if that property exists, in particular for shapefiles.
 #'
-#' @name as_spark_dataframe
-NULL
-
-#' Import data from a spatial RDD into a Spark Dataframe.
-#'
-#' @inheritParams as_spark_dataframe
 #'
 #' @importFrom sparklyr sdf_register
 #'
@@ -46,31 +48,7 @@ NULL
 #'     type = "polygon"
 #'   )
 #'   sdf <- sdf_register(rdd)
-#' }
-#'
-#' @export
-sdf_register.spatial_rdd <- function(x, name = NULL) {
-  as.spark.dataframe(x, name = name)
-}
-
-#' Import data from a spatial RDD into a Spark Dataframe.
-#'
-#' Import data from a spatial RDD (possibly with non-spatial attributes) into a
-#' Spark Dataframe.
-#'
-#' @inheritParams as_spark_dataframe
-#' @param non_spatial_cols Column names for non-spatial attributes in the
-#'   resulting Spark Dataframe.
-#'
-#' @return A Spark Dataframe containing the imported spatial data.
-#'
-#' @examples
-#' library(sparklyr)
-#' library(apache.sedona)
-#'
-#' sc <- spark_connect(master = "spark://HOST:PORT")
-#'
-#' if (!inherits(sc, "test_connection")) {
+#'   
 #'   input_location <- "/dev/null" # replace it with the path to your input file
 #'   rdd <- sedona_read_dsv_to_typed_rdd(
 #'     sc,
@@ -84,8 +62,27 @@ sdf_register.spatial_rdd <- function(x, name = NULL) {
 #' }
 #'
 #' @export
+sdf_register.spatial_rdd <- function(x, name = NULL) {
+  as.spark.dataframe(x, name = name)
+}
+
+
+#' @export
+#' @rdname sdf_register.spatial_rdd
 as.spark.dataframe <- function(x, non_spatial_cols = NULL, name = NULL) {
   sc <- spark_connection(x$.jobj)
+  
+  # Default keep all columns
+  if (is.null(non_spatial_cols)) {
+    if (!is.null(invoke(x$.jobj, "%>%", list("fieldNames")))) { ## Only if dataset has field names
+      non_spatial_cols <- invoke(x$.jobj, "%>%", list("fieldNames"), list("toString")) ### Get columns names
+      non_spatial_cols <- gsub("(^\\[|\\]$)", "", non_spatial_cols)  ##### remove brackets
+      non_spatial_cols <- strsplit(non_spatial_cols, ", ")[[1]]  ##### turn into list
+    }
+  } else {
+    stopifnot("non_spatial_cols needs to be a character vector (or NULL, default)" = is.character(non_spatial_cols))
+  }
+  
   sdf <- invoke_static(
     sc,
     "org.apache.sedona.sql.utils.Adapter",

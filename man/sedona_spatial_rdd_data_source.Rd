@@ -2,8 +2,7 @@
 % Please edit documentation in R/data_interface.R
 \name{sedona_spatial_rdd_data_source}
 \alias{sedona_spatial_rdd_data_source}
-\title{Create a SpatialRDD from an external data source.
-Import spatial object from an external data source into a Sedona SpatialRDD.}
+\title{Create a SpatialRDD from an external data source.}
 \arguments{
 \item{sc}{A \code{spark_connection}.}
 
@@ -21,6 +20,6 @@ attributes.}
 RDD (default: 1).}
 }
 \description{
-Create a SpatialRDD from an external data source.
 Import spatial object from an external data source into a Sedona SpatialRDD.
 }
+\keyword{internal}

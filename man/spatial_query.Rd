@@ -25,3 +25,4 @@ within this list will be a JVM object of type
 Given a spatial RDD, run a spatial query parameterized by a spatial object
 \code{x}.
 }
+\keyword{internal}

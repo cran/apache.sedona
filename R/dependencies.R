@@ -15,43 +15,42 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
+
 spark_dependencies <- function(spark_version, scala_version, ...) {
   if (spark_version[1, 1] == "3") {
     spark_version <- "3.0"
     scala_version <- scala_version %||% "2.12"
-  } else if (spark_version[1, 1] == "2" && spark_version[1, 2] == "4") {
-    spark_version <- "2.4"
-    scala_version <- scala_version %||% "2.11"
   } else {
     stop("Unsupported Spark version: ", spark_version)
   }
 
   packages <- c(
-    "org.datasyslab:geotools-wrapper:geotools-24.1",
-    "org.datasyslab:sernetcdf:0.1.0",
-    "org.locationtech.jts:jts-core:1.18.0",
-    "org.wololo:jts2geojson:0.14.3"
+    "org.datasyslab:geotools-wrapper:1.4.0-28.2",
+    "edu.ucar:cdm-core:5.4.2"
   )
   jars <- NULL
 
   sedona_jar_files <- Sys.getenv("SEDONA_JAR_FILES")
   if (nchar(sedona_jar_files) > 0) {
+    cli::cli_alert_info("Using Sedona jars listed in SEDONA_JAR_FILES variable (see Sys.getenv(\"SEDONA_JAR_FILES\"))")
     jars <- strsplit(sedona_jar_files, ":")[[1]]
   } else {
     packages <- c(
       paste0(
         "org.apache.sedona:sedona-",
-        c("core", "sql", "viz"),
-        sprintf("-%s_%s:1.2.0-incubating", spark_version, scala_version)
+        c("spark-shaded", "viz"),
+        sprintf("-%s_%s:1.4.0", spark_version, scala_version)
       ),
       packages
     )
+    cli::cli_alert_info(sprintf("Using Sedona jars versions: %s etc.", packages[1]))
   }
 
   spark_dependency(
     jars = jars,
     packages = packages,
     initializer = sedona_initialize_spark_connection,
+    repositories = c("https://artifacts.unidata.ucar.edu/repository/unidata-all"),
     dbplyr_sql_variant = sedona_dbplyr_sql_variant()
   )
 }
@@ -135,28 +134,6 @@ sedona_initialize_spark_connection <- function(sc) {
 sedona_dbplyr_sql_variant <- function() {
   list(
     scalar = list(
-      ST_Point = function(x, y) {
-        dbplyr::build_sql(
-          "ST_Point(CAST(",
-          x,
-          " AS DECIMAL(24, 20)), CAST(",
-          y,
-          " AS DECIMAL(24, 20)))"
-        )
-      },
-      ST_PolygonFromEnvelope = function(min_x, min_y, max_x, max_y) {
-        dbplyr::build_sql(
-          "ST_PolygonFromEnvelope(CAST(",
-          min_x,
-          " AS DECIMAL(24, 20)), CAST(",
-          min_y,
-          " AS DECIMAL(24, 20)), CAST(",
-          max_x,
-          " AS DECIMAL(24, 20)), CAST(",
-          max_y,
-          " AS DECIMAL(24, 20)))"
-        )
-      },
       ST_Buffer = function(geometry, buffer) {
         dbplyr::build_sql(
           "ST_Buffer(", geometry, ", CAST(", buffer, " AS DOUBLE))"

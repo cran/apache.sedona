@@ -2,7 +2,10 @@
 % Please edit documentation in R/data_interface.R
 \name{sedona_read_geojson}
 \alias{sedona_read_geojson}
-\title{Create a SpatialRDD from a GeoJSON data source.}
+\alias{sedona_read_wkb}
+\alias{sedona_read_wkt}
+\alias{sedona_read_shapefile}
+\title{Read geospatial data into a Spatial RDD}
 \usage{
 sedona_read_geojson(
   sc,
@@ -12,6 +15,28 @@ sedona_read_geojson(
   storage_level = "MEMORY_ONLY",
   repartition = 1L
 )
+
+sedona_read_wkb(
+  sc,
+  location,
+  wkb_col_idx = 0L,
+  allow_invalid_geometries = TRUE,
+  skip_syntactically_invalid_geometries = TRUE,
+  storage_level = "MEMORY_ONLY",
+  repartition = 1L
+)
+
+sedona_read_wkt(
+  sc,
+  location,
+  wkt_col_idx = 0L,
+  allow_invalid_geometries = TRUE,
+  skip_syntactically_invalid_geometries = TRUE,
+  storage_level = "MEMORY_ONLY",
+  repartition = 1L
+)
+
+sedona_read_shapefile(sc, location, storage_level = "MEMORY_ONLY")
 }
 \arguments{
 \item{sc}{A \code{spark_connection}.}
@@ -29,12 +54,24 @@ errorings.}
 
 \item{repartition}{The minimum number of partitions to have in the resulting
 RDD (default: 1).}
+
+\item{wkb_col_idx}{Zero-based index of column containing hex-encoded WKB data
+(default: 0).}
+
+\item{wkt_col_idx}{Zero-based index of column containing hex-encoded WKB data
+(default: 0).}
 }
 \value{
 A SpatialRDD.
 }
 \description{
-Create a generic SpatialRDD from a GeoJSON data source.
+Import spatial object from an external data source into a Sedona SpatialRDD.
+\itemize{
+\item \code{sedona_read_shapefile}: from a shapefile
+\item \code{sedona_read_geojson}: from a geojson file
+\item \code{sedona_read_wkt}: from a geojson file
+\item \code{sedona_read_wkb}: from a geojson file
+}
 }
 \examples{
 library(sparklyr)
@@ -49,16 +86,10 @@ if (!inherits(sc, "test_connection")) {
 
 }
 \seealso{
-Other Sedona data inferface functions: 
+Other Sedona RDD data interface functions: 
 \code{\link{sedona_read_dsv_to_typed_rdd}()},
-\code{\link{sedona_read_geojson_to_typed_rdd}()},
 \code{\link{sedona_read_shapefile_to_typed_rdd}()},
-\code{\link{sedona_read_shapefile}()},
-\code{\link{sedona_read_wkb}()},
-\code{\link{sedona_read_wkt}()},
 \code{\link{sedona_save_spatial_rdd}()},
-\code{\link{sedona_write_geojson}()},
-\code{\link{sedona_write_wkb}()},
-\code{\link{sedona_write_wkt}()}
+\code{\link{sedona_write_wkb}()}
 }
-\concept{Sedona data inferface functions}
+\concept{Sedona RDD data interface functions}

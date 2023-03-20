@@ -2,9 +2,15 @@
 % Please edit documentation in R/data_interface.R
 \name{sedona_write_wkb}
 \alias{sedona_write_wkb}
-\title{Write SpatialRDD into a WKB file.}
+\alias{sedona_write_wkt}
+\alias{sedona_write_geojson}
+\title{Write SpatialRDD into a file.}
 \usage{
 sedona_write_wkb(x, output_location)
+
+sedona_write_wkt(x, output_location)
+
+sedona_write_geojson(x, output_location)
 }
 \arguments{
 \item{x}{The SpatialRDD object.}
@@ -15,7 +21,12 @@ sedona_write_wkb(x, output_location)
 No return value.
 }
 \description{
-Export serialized data from a Sedona SpatialRDD into a WKB file.
+Export serialized data from a Sedona SpatialRDD into a file.
+\itemize{
+\item \code{sedona_write_wkb}:
+\item \code{sedona_write_wkt}:
+\item \code{sedona_write_geojson}:
+}
 }
 \examples{
 library(sparklyr)
@@ -35,16 +46,10 @@ if (!inherits(sc, "test_connection")) {
 
 }
 \seealso{
-Other Sedona data inferface functions: 
+Other Sedona RDD data interface functions: 
 \code{\link{sedona_read_dsv_to_typed_rdd}()},
-\code{\link{sedona_read_geojson_to_typed_rdd}()},
 \code{\link{sedona_read_geojson}()},
 \code{\link{sedona_read_shapefile_to_typed_rdd}()},
-\code{\link{sedona_read_shapefile}()},
-\code{\link{sedona_read_wkb}()},
-\code{\link{sedona_read_wkt}()},
-\code{\link{sedona_save_spatial_rdd}()},
-\code{\link{sedona_write_geojson}()},
-\code{\link{sedona_write_wkt}()}
+\code{\link{sedona_save_spatial_rdd}()}
 }
-\concept{Sedona data inferface functions}
+\concept{Sedona RDD data interface functions}

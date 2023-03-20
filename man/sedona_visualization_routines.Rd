@@ -17,10 +17,10 @@ desired path of the image file excluding extension in its file name.}
 "gif", and "svg" formats are supported (default: "png").}
 
 \item{boundary}{Only render data within the given rectangular boundary.
-The `boundary` parameter can be set to either a numeric vector of
+The \code{boundary} parameter can be set to either a numeric vector of
 c(min_x, max_y, min_y, max_y) values, or with a bounding box object
 e.g., new_bounding_box(sc, min_x, max_y, min_y, max_y), or NULL
-(the default). If `boundary` is NULL, then the minimum bounding box of the
+(the default). If \code{boundary} is NULL, then the minimum bounding box of the
 input spatial RDD will be computed and used as boundary for rendering.}
 
 \item{color_of_variation}{Which color channel will vary depending on values
@@ -43,3 +43,4 @@ interactive()).}
 Generate a visual representation of geometrical object(s) within a Sedona
 spatial RDD.
 }
+\keyword{internal}

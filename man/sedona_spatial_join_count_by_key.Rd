@@ -19,33 +19,33 @@ sedona_spatial_join_count_by_key(
 
 \item{join_type}{Type of the join query (must be either "contain" or
 "intersect").
-If `join_type` is "contain", then a geometry from `spatial_rdd` will match
-a geometry from the `query_window_rdd` if and only if the former is fully
+If \code{join_type} is "contain", then a geometry from \code{spatial_rdd} will match
+a geometry from the \code{query_window_rdd} if and only if the former is fully
 contained in the latter.
-If `join_type` is "intersect", then a geometry from `spatial_rdd` will
-match a geometry from the `query_window_rdd` if and only if the former
+If \code{join_type} is "intersect", then a geometry from \code{spatial_rdd} will
+match a geometry from the \code{query_window_rdd} if and only if the former
 intersects the latter.}
 
-\item{partitioner}{Spatial partitioning to apply to both `spatial_rdd` and
-`query_window_rdd` to facilitate the join query. Can be either a grid type
+\item{partitioner}{Spatial partitioning to apply to both \code{spatial_rdd} and
+\code{query_window_rdd} to facilitate the join query. Can be either a grid type
 (currently "quadtree" and "kdbtree" are supported) or a custom spatial
-partitioner object. If `partitioner` is NULL, then assume the same spatial
-partitioner has been applied to both `spatial_rdd` and `query_window_rdd`
+partitioner object. If \code{partitioner} is NULL, then assume the same spatial
+partitioner has been applied to both \code{spatial_rdd} and \code{query_window_rdd}
 already and skip the partitioning step.}
 
-\item{index_type}{Controls how `spatial_rdd` and `query_window_rdd` will be
+\item{index_type}{Controls how \code{spatial_rdd} and \code{query_window_rdd} will be
 indexed (unless they are indexed already). If "NONE", then no index will be
 constructed and matching geometries will be identified in a doubly nested-
-loop iterating through all possible pairs of elements from `spatial_rdd`
-and `query_window_rdd`, which will be inefficient for large data sets.}
+loop iterating through all possible pairs of elements from \code{spatial_rdd}
+and \code{query_window_rdd}, which will be inefficient for large data sets.}
 }
 \value{
 A spatial RDD containing the join-count-by-key results.
 }
 \description{
-For each element p from `spatial_rdd`, count the number of unique elements q
-from `query_window_rdd` such that (p, q) satisfies the spatial relation
-specified by `join_type`.
+For each element p from \code{spatial_rdd}, count the number of unique elements q
+from \code{query_window_rdd} such that (p, q) satisfies the spatial relation
+specified by \code{join_type}.
 }
 \examples{
 library(sparklyr)

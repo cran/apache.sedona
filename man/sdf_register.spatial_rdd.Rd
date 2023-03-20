@@ -2,21 +2,32 @@
 % Please edit documentation in R/sdf_interface.R
 \name{sdf_register.spatial_rdd}
 \alias{sdf_register.spatial_rdd}
+\alias{as.spark.dataframe}
 \title{Import data from a spatial RDD into a Spark Dataframe.}
 \usage{
 \method{sdf_register}{spatial_rdd}(x, name = NULL)
+
+as.spark.dataframe(x, non_spatial_cols = NULL, name = NULL)
 }
 \arguments{
 \item{x}{A spatial RDD.}
 
 \item{name}{Name to assign to the resulting Spark temporary view. If
 unspecified, then a random name will be assigned.}
+
+\item{non_spatial_cols}{Column names for non-spatial attributes in the
+resulting Spark Dataframe. By default (NULL) it will import all field names if that property exists, in particular for shapefiles.}
 }
 \value{
 A Spark Dataframe containing the imported spatial data.
 }
 \description{
-Import data from a spatial RDD into a Spark Dataframe.
+Import data from a spatial RDD (possibly with non-spatial attributes) into a
+Spark Dataframe.
+\itemize{
+\item \code{sdf_register}: method for sparklyr's sdf_register to handle Spatial RDD
+\item \code{as.spark.dataframe}: lower level function with more fine-grained control on non-spatial columns
+}
 }
 \examples{
 library(sparklyr)
@@ -32,6 +43,17 @@ if (!inherits(sc, "test_connection")) {
     type = "polygon"
   )
   sdf <- sdf_register(rdd)
+  
+  input_location <- "/dev/null" # replace it with the path to your input file
+  rdd <- sedona_read_dsv_to_typed_rdd(
+    sc,
+    location = input_location,
+    delimiter = ",",
+    type = "point",
+    first_spatial_col_index = 1L,
+    repartition = 5
+  )
+  sdf <- as.spark.dataframe(rdd, non_spatial_cols = c("attr1", "attr2"))
 }
 
 }

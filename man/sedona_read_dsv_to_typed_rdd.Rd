@@ -75,16 +75,10 @@ if (!inherits(sc, "test_connection")) {
 
 }
 \seealso{
-Other Sedona data inferface functions: 
-\code{\link{sedona_read_geojson_to_typed_rdd}()},
+Other Sedona RDD data interface functions: 
 \code{\link{sedona_read_geojson}()},
 \code{\link{sedona_read_shapefile_to_typed_rdd}()},
-\code{\link{sedona_read_shapefile}()},
-\code{\link{sedona_read_wkb}()},
-\code{\link{sedona_read_wkt}()},
 \code{\link{sedona_save_spatial_rdd}()},
-\code{\link{sedona_write_geojson}()},
-\code{\link{sedona_write_wkb}()},
-\code{\link{sedona_write_wkt}()}
+\code{\link{sedona_write_wkb}()}
 }
-\concept{Sedona data inferface functions}
+\concept{Sedona RDD data interface functions}

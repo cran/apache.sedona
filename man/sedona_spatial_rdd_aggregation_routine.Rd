@@ -9,3 +9,4 @@
 \description{
 Function extracting aggregate statistics from a Sedona spatial RDD.
 }
+\keyword{internal}
