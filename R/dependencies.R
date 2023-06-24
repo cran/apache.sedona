@@ -39,7 +39,7 @@ spark_dependencies <- function(spark_version, scala_version, ...) {
       paste0(
         "org.apache.sedona:sedona-",
         c("spark-shaded", "viz"),
-        sprintf("-%s_%s:1.4.0", spark_version, scala_version)
+        sprintf("-%s_%s:1.4.1", spark_version, scala_version)
       ),
       packages
     )
@@ -84,7 +84,7 @@ sedona_initialize_spark_connection <- function(sc) {
     "semicolon"
   )) {
     sc$state$enums$delimiter[[x]] <- invoke_static(
-      sc, "org.apache.sedona.core.enums.FileDataSplitter", toupper(x)
+      sc, "org.apache.sedona.common.enums.FileDataSplitter", toupper(x)
     )
   }
   for (x in c(
@@ -99,7 +99,7 @@ sedona_initialize_spark_connection <- function(sc) {
     "rectangle"
   )) {
     sc$state$enums$geometry_type[[x]] <- invoke_static(
-      sc, "org.apache.sedona.core.enums.GeometryType", toupper(x)
+      sc, "org.apache.sedona.common.enums.GeometryType", toupper(x)
     )
   }
   for (x in c("quadtree", "rtree")) {

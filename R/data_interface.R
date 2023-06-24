@@ -423,7 +423,7 @@ spark_read_shapefile <- function(sc,
   
   lapply(names(options), function(name) {
     if (!name %in% c("")) {
-      warning(paste0("Ignoring unkown option '", name,"'"))
+      warning(paste0("Ignoring unknown option '", name,"'"))
     }
   })
   
@@ -452,7 +452,7 @@ spark_read_geojson <- function(sc,
   if ("skip_syntactically_invalid_geometries" %in% names(options)) final_skip <- options[["skip_syntactically_invalid_geometries"]] else final_skip <- TRUE
   lapply(names(options), function(name) {
     if (!name %in% c("allow_invalid_geometries", "skip_syntactically_invalid_geometries")) {
-      warning(paste0("Ignoring unkown option '", name,"'"))
+      warning(paste0("Ignoring unknown option '", name,"'"))
     }
   })
   
@@ -630,7 +630,8 @@ sedona_save_spatial_rdd <- function(x,
 #' 
 #' * `spark_write_geojson`: to GeoJSON
 #' * `spark_write_geoparquet`: to GeoParquet
-#' * `spark_write_geotiff`: to GeoTiff
+#' * `spark_write_geotiff`: to GeoTiff from Array\[Double\] rasters 
+#' * `spark_write_raster`: to raster tiles after using RS output functions (`RS_AsXXX`) 
 #'
 #'
 #' @param path The path to the file. Needs to be accessible from the cluster.
@@ -736,6 +737,31 @@ spark_write_geotiff <- function(x,
   )
   
 }
+
+
+#' @export
+#' @rdname spark_write_geojson
+#' @importFrom sparklyr spark_write_source
+spark_write_raster <- function(x,
+                                   path,
+                                   mode = NULL,
+                                   options = list(),
+                                   partition_by = NULL,
+                                   ...) {
+  
+  spark_write_source(
+    x = x,
+    source = "raster",
+    mode = mode,
+    options = options,
+    partition_by = partition_by,
+    save_args = list(path),
+    ...
+  )
+  
+}
+
+
 
 # ------- Utilities ------------
 rdd_cls_from_type <- function(type = c("point", "polygon", "linestring")) {
