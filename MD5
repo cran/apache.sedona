@@ -1,9 +1,9 @@
-15fe89684d2bcc55a2f4b3d96fbd929d *DESCRIPTION
+d50e503c112e89667a6cd5c1ca7c4d2f *DESCRIPTION
 303b36dec8dc5339bb7860b4ea144070 *NAMESPACE
 d7a54580ba6b0c63cf4b2782267b6f43 *R/apache.sedona-package.R
 e82655964775c81149350d9417e567fd *R/bounding_box.R
 a0949b578a76d1bb3fd381de627f2e3f *R/data_interface.R
-bfa4f33c6c7fd0b9abe9aae2f36daba0 *R/dependencies.R
+1e0e155dc20e15ad09e3cb086e5cff4c *R/dependencies.R
 ebf0767a2fb08b92059892cb79dfc3ae *R/imports.R
 46390f84341af632507664fb9795cbab *R/sdf_interface.R
 d698831554cf4a531d31bd7fa510bfa6 *R/spatial_index_op.R
@@ -12,7 +12,7 @@ f34b4d0a71732248b8be4f080c9fa392 *R/spatial_join_op.R
 f6027bcba5eebe180da6e78c18a4e904 *R/spatial_queries.R
 e349231732b4b3c7d01963d763792897 *R/spatial_rdd.R
 abb59ef9c1f843621c18f8600f9ee89c *R/viz.R
-7c5704228be1b1595ed2544e3d353f29 *README.md
+c879ef7fdb5dee54580439786f5fa31e *README.md
 1908a5eca61ffcf063ef98c5cd7c6e00 *man/apache.sedona-package.Rd
 b0ec12abc98e90dd0ee484aa782ba4cf *man/approx_count.Rd
 a958266a0377d88add3448b3a91b9787 *man/crs_transform.Rd
