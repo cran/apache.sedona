@@ -1,9 +1,9 @@
-b3b6046d0510675c7daf1c98ff7108e0 *DESCRIPTION
+0afbc0b3cd1a26e64974ed670ae4ae49 *DESCRIPTION
 303b36dec8dc5339bb7860b4ea144070 *NAMESPACE
 d7a54580ba6b0c63cf4b2782267b6f43 *R/apache.sedona-package.R
 e82655964775c81149350d9417e567fd *R/bounding_box.R
 a0949b578a76d1bb3fd381de627f2e3f *R/data_interface.R
-d0f9f07a6c98f20f061041d658aa2f39 *R/dependencies.R
+dbf3fd4adcbf5e80db3ad078de6d3672 *R/dependencies.R
 ebf0767a2fb08b92059892cb79dfc3ae *R/imports.R
 46390f84341af632507664fb9795cbab *R/sdf_interface.R
 d698831554cf4a531d31bd7fa510bfa6 *R/spatial_index_op.R
@@ -12,7 +12,7 @@ f34b4d0a71732248b8be4f080c9fa392 *R/spatial_join_op.R
 f6027bcba5eebe180da6e78c18a4e904 *R/spatial_queries.R
 e349231732b4b3c7d01963d763792897 *R/spatial_rdd.R
 abb59ef9c1f843621c18f8600f9ee89c *R/viz.R
-c879ef7fdb5dee54580439786f5fa31e *README.md
+de7069e24a193ae7f66764da722f6ff7 *README.md
 1908a5eca61ffcf063ef98c5cd7c6e00 *man/apache.sedona-package.Rd
 b0ec12abc98e90dd0ee484aa782ba4cf *man/approx_count.Rd
 a958266a0377d88add3448b3a91b9787 *man/crs_transform.Rd
@@ -24,7 +24,7 @@ c3978703d8f40f2679795335715e98f4 *man/figures/lifecycle-experimental.svg
 27b879bf3677ea76e3991d56ab324081 *man/figures/lifecycle-questioning.svg
 53b3f893324260b737b3c46ed2a0e643 *man/figures/lifecycle-stable.svg
 1c1fe7a759b86dc6dbcbe7797ab8246c *man/figures/lifecycle-superseded.svg
-324e0a940597ddfab409f876410f9a2f *man/figures/logo.png
+bd13e65b131db9c20d949c71958137ae *man/figures/logo.png
 80d48398bee55e6e3f4bc36a1395f1a7 *man/minimum_bounding_box.Rd
 e9dc22f6df3a862056e7209090ee87e0 *man/new_bounding_box.Rd
 bf133c90c34252c4b9cbf2e989c99ae3 *man/sdf_register.spatial_rdd.Rd
