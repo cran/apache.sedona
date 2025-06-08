@@ -1,9 +1,9 @@
-f6b561cce19d0b4ee324705fe1bd0498 *DESCRIPTION
+ed6394278093af750a47900a21eae3b7 *DESCRIPTION
 303b36dec8dc5339bb7860b4ea144070 *NAMESPACE
 cca60cf95f402eb2dd78c0bc8fa884ae *R/apache.sedona-package.R
 c32edf29c8ddc945dd7ac4374f828b4a *R/bounding_box.R
 ae8735dc41c2cf3324bbf9ee14823b19 *R/data_interface.R
-58ca87d54ce0103bfe81f56001c248d0 *R/dependencies.R
+a51fd85b1a5de166d7ee352ded948273 *R/dependencies.R
 0a671394f73738bbcca8c50eb983ac0a *R/imports.R
 760f33dabf878891bf0081a254b5a2a0 *R/sdf_interface.R
 dc43a81a3248d199431690e6d9b87821 *R/spatial_index_op.R
